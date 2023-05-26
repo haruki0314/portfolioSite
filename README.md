@@ -1,3 +1,13 @@
+- Ts nextjs
+- chakraUI
+  UI
+- GraphQL1
+  DB
+- react hook form
+  form 用
+- Recoil
+- Prisma
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
