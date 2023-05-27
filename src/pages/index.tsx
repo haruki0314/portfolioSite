@@ -7,19 +7,15 @@ import {
   Spacer,
   VStack,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+
 import { Box, Heading, Stack } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
-import { ImGithub } from "react-icons/Im";
+import { ImGithub } from "react-icons/im";
 import { SiWantedly } from "react-icons/si";
 import { BsInstagram } from "react-icons/bs";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-// import { Divider, Container, HStack } from "@chakra-ui/react";
-// import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-// import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -77,18 +73,6 @@ export default function App() {
           />
         </Flex>
         <Header />
-
-        {/* <Box m="20px">
-          <Tabs>
-          <TabList>
-              <Tab>名前</Tab>
-              <Tab>技術スタック</Tab>
-              <Tab>経歴</Tab>
-              <Tab>趣味</Tab>
-              <Tab>連絡先</Tab>
-            </TabList>
-          </Tabs>
-        </Box> */}
 
         {/* <Heading as="h2" size="xl" noOfLines={1}>
           技術スタック
