@@ -1,13 +1,19 @@
 import React from "react";
-import { Button } from "@chakra-ui/button";
 import {
+  Box,
+  Flex,
+  IconButton,
+  Spacer,
+  VStack,
+  Heading,
   useColorMode,
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/image";
-import { Circle, Stack, Flex, Box, Text } from "@chakra-ui/layout";
-
+import { ImGithub } from "react-icons/im";
+import { SiWantedly } from "react-icons/si";
+import { BsInstagram } from "react-icons/bs";
+import { FaSun, FaMoon } from "react-icons/fa";
 export const Header = () => {
   const colorToggle = useColorModeValue("black", "white");
   const { colorMode, toggleColorMode } = useColorMode();
@@ -28,51 +34,58 @@ export const Header = () => {
 
   return (
     <div>
-      <Stack>
-        <Circle
-          position="absolute"
-          bg="green.100"
-          opacity="0.1"
-          size="310px"
-          alignSelf="flex-start"
-          display={displayCircle}
-        />
-        <Flex
-          direction={flexDirection}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Image
-            alignSelf="center"
-            borderRadius="full"
-            backgroundColor="transparent"
-            boxShadow="lg"
-            boxSize="300px"
-            m={boxMargin}
-            zIndex={1}
-            src="https://avatars.githubusercontent.com/u/46438353?v=4"
-            alt=""
-          />
-          <Box m={boxMargin} maxW={boxSize} alignSelf="flex-middle">
-            <Text fontSize="4xl" fontWeight="bold" color={colorToggle}>
-              Haruki oba
-            </Text>
-            <Text color={colorToggle}>
-              I am a freelance engineer. I mainly participate in both front-end
-              and back-end work
-            </Text>
-            <Flex justifyContent={buttonAlignment}>
-              <Button
-                mt={boxMarginTop}
-                color={colorToggle}
-                onClick={() => window.open("https://github.com/haruki0314")}
-              >
-                Hire Me
-              </Button>
-            </Flex>
+      <VStack p="5">
+        <Flex w="100%">
+          <Heading color="green.500" ml="8" fontWeight="semibold" size="md">
+            Haruki Oba
+          </Heading>
+          <Spacer />
+
+          <Box>
+            <IconButton
+              icon={<ImGithub />}
+              color={colorToggle}
+              size="md"
+              isRound={true}
+              aria-label={""}
+              onClick={() => {
+                window.open("https://github.com/haruki0314");
+              }}
+            />
+            <IconButton
+              icon={<SiWantedly />}
+              size="md"
+              ml={2}
+              color={colorToggle}
+              isRound={true}
+              aria-label={""}
+              onClick={() => {
+                window.open("https://www.wantedly.com/id/haruki_oba");
+              }}
+            />
+            <IconButton
+              icon={<BsInstagram />}
+              size="md"
+              ml={2}
+              color={colorToggle}
+              isRound={true}
+              aria-label={""}
+              onClick={() => {
+                window.open("https://www.instagram.com/haruki_1403/");
+              }}
+            />
+            <IconButton
+              icon={isDark ? <FaSun /> : <FaMoon />}
+              color={colorToggle}
+              size="md"
+              ml={8}
+              isRound={true}
+              aria-label={""}
+              onClick={toggleColorMode}
+            />
           </Box>
         </Flex>
-      </Stack>
+      </VStack>
     </div>
   );
 };

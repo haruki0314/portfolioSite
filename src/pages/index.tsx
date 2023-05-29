@@ -1,4 +1,5 @@
 import Head from "next/head";
+import {} from "@chakra-ui/react";
 import {
   Button,
   Flex,
@@ -6,75 +7,95 @@ import {
   Link,
   Spacer,
   VStack,
+  Box,
+  Stack,
+  Text,
+  Circle,
+  useColorMode,
+  useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { Box, Heading, Stack } from "@chakra-ui/react";
-import { ImGithub } from "react-icons/im";
-import { SiWantedly } from "react-icons/si";
-import { BsInstagram } from "react-icons/bs";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { FaSun, FaMoon } from "react-icons/fa";
 import { Header } from "../components/Header";
+import { Image } from "@chakra-ui/image";
 import { Footer } from "../components/Footer";
 
 export default function App() {
+  const displayCircle = useBreakpointValue({ base: "none", md: "block" });
+  const boxSize = useBreakpointValue({ base: "15rem", md: "20rem" }); // 例: Boxのサイズを変更
+  const boxMargin = useBreakpointValue({ base: "1rem", md: "3rem" }); // 例: Boxのマージンを変更
+  const boxMarginTop = useBreakpointValue({ base: "2", md: "3" }); // 例: Boxのマージンを変更
+  const boxPlace = useBreakpointValue({ base: "", md: "center" });
+  const buttonAlignment = useBreakpointValue({
+    base: "flex-end",
+    md: "flex-start",
+  });
+  const flexDirection = useBreakpointValue({ base: "column", md: "row" }) as
+    | "column"
+    | "row"
+    | undefined;
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const colorToggle = useColorModeValue("black", "white");
   return (
     <Box>
       <Head>harukis portfolio site</Head>
-      <VStack p="5">
-        <Flex w="100%">
-          <Heading color="green.500" ml="8" fontWeight="semibold" size="md">
-            Haruki Oba
-          </Heading>
-          <Spacer />
-          <IconButton
-            icon={<ImGithub />}
-            color={colorToggle}
-            size="md"
-            isRound={true}
-            aria-label={""}
-            onClick={() => {
-              window.open("https://github.com/haruki0314");
-            }}
+      <Header />
+      <Stack>
+        <Circle
+          position="absolute"
+          bg="green.100"
+          opacity="0.1"
+          size="310px"
+          alignSelf="flex-start"
+          display={displayCircle}
+        />
+        <Flex
+          direction={flexDirection}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Image
+            alignSelf="center"
+            borderRadius="full"
+            backgroundColor="transparent"
+            boxShadow="lg"
+            boxSize="300px"
+            m={boxMargin}
+            zIndex={1}
+            src="https://avatars.githubusercontent.com/u/46438353?v=4"
+            alt=""
           />
-          <IconButton
-            icon={<SiWantedly />}
-            size="md"
-            ml={2}
-            color={colorToggle}
-            isRound={true}
-            aria-label={""}
-            onClick={() => {
-              window.open("https://www.wantedly.com/id/haruki_oba");
-            }}
-          />
-          <IconButton
-            icon={<BsInstagram />}
-            size="md"
-            ml={2}
-            color={colorToggle}
-            isRound={true}
-            aria-label={""}
-            onClick={() => {
-              window.open("https://www.instagram.com/haruki_1403/");
-            }}
-          />
-          <IconButton
-            icon={isDark ? <FaSun /> : <FaMoon />}
-            color={colorToggle}
-            size="md"
-            ml={8}
-            isRound={true}
-            aria-label={""}
-            onClick={toggleColorMode}
-          />
+          <Box m={boxMargin} maxW={boxSize} alignSelf="flex-middle">
+            <Text fontSize="4xl" fontWeight="bold" color={colorToggle}>
+              Haruki oba
+            </Text>
+            <Text color={colorToggle}>
+              I am a freelance engineer. I mainly participate in both front-end
+              and back-end work
+            </Text>
+            <Flex justifyContent={buttonAlignment}>
+              <Button
+                color={colorToggle}
+                onClick={() => {
+                  window.open("/contactForm");
+                }}
+              >
+                Hire Me
+              </Button>
+            </Flex>
+          </Box>
         </Flex>
-        <Header />
+      </Stack>
+      <Box mt="auto">
+        <Footer />
+      </Box>
+    </Box>
+  );
+}
 
-        {/* <Heading as="h2" size="xl" noOfLines={1}>
+{
+  /* <Heading as="h2" size="xl" noOfLines={1}>
           技術スタック
         </Heading>
         <Stack>
@@ -93,8 +114,10 @@ export default function App() {
         </Heading>
         <Stack>
           <Text fontSize="xl">外食が好きです🍜</Text>
-        </Stack> */}
-        {/* <Heading my={500} as="h2" size="xl" noOfLines={1}>
+        </Stack> */
+}
+{
+  /* <Heading my={500} as="h2" size="xl" noOfLines={1}>
           連絡先
         </Heading>
         <Stack>
@@ -107,9 +130,13 @@ export default function App() {
         </Heading>
         <Link href="https://chakra-ui.com" isExternal>
           Chakra Design system <ExternalLinkIcon mx="2px" />
-        </Link> */}
-        {/* </Vstack> */}
-        {/* <Container maxW={"3xl"} id="about">
+        </Link> */
+}
+{
+  /* </Vstack> */
+}
+{
+  /* <Container maxW={"3xl"} id="about">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -129,12 +156,5 @@ export default function App() {
             {profile.about}
           </Text>
         </Stack>
-      </Container> */}
-      </VStack>
-
-      <Box mt="auto">
-        <Footer />
-      </Box>
-    </Box>
-  );
+      </Container> */
 }
