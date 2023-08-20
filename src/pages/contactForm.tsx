@@ -31,7 +31,7 @@ import { Footer } from "../components/Footer";
 
 type FormData = {
   email: string;
-  password: string;
+  text: string;
 };
 
 export default function App() {
@@ -44,37 +44,52 @@ export default function App() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: FormData) => {
+    console.log(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Head>業務委託フォーム</Head>
+      <Head>お仕事依頼フォーム</Head>
       <Box color={colorToggle}>
         <Header />
         <Stack p="100">
-          <FormControl>
-            <Text color={colorToggle}>業務委託フォーム</Text>
-            <FormLabel>Email address</FormLabel>
-            <Input
-              color={colorToggle}
-              type="email"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-            />
-            <FormHelperText color={colorToggle}>
-              We ll never share your email.
-            </FormHelperText>
-            <Text color={colorToggle}>
-              {errors.email && <span>This field is required</span>}
-            </Text>
-          </FormControl>
+          <Text fontSize="xl" color={colorToggle}>
+            お仕事依頼フォーム
+          </Text>
+          <Box>
+            <FormControl>
+              <FormLabel mt="20px">Email address</FormLabel>
+              <Input
+                color={colorToggle}
+                type="email"
+                {...register("email", {
+                  required: true,
+                  pattern: /^\S+@\S+$/i,
+                })}
+              />
+              <Text color={colorToggle}>
+                {errors.email && <span>This field is required</span>}
+              </Text>
+
+              <FormLabel mt="20px">内容</FormLabel>
+              <Input
+                color={colorToggle}
+                type="text"
+                {...register("text", { required: true })}
+              />
+
+              <FormHelperText color={colorToggle}>
+                We ll never share your email.
+              </FormHelperText>
+            </FormControl>
+          </Box>
           <input type="submit" />
         </Stack>
         <Box mt="auto">
           <Footer />
         </Box>
-        <Text fontSize="15px" color={colorToggle}>
-          開発中のため送信で来ません🙏
-        </Text>
+        <Text fontSize="15px" color={colorToggle}></Text>
       </Box>
     </form>
   );
