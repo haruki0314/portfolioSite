@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {} from "@chakra-ui/react";
+import { Heading, Icon } from "@chakra-ui/react";
 import {
   Button,
   Flex,
@@ -11,14 +11,32 @@ import {
   Stack,
   Text,
   Circle,
+  Container,
   useColorMode,
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { Card } from "@/components/molecules/card";
 
 import { Header } from "../components/Header";
 import { Image } from "@chakra-ui/image";
 import { Footer } from "../components/Footer";
+import { ReactElement } from "react";
+
+import {
+  FcAbout,
+  FcAssistant,
+  FcCollaboration,
+  FcDonate,
+  FcManager,
+} from "react-icons/fc";
+
+interface CardProps {
+  heading: string;
+  description: string;
+  icon: ReactElement;
+  href: string;
+}
 
 export default function App() {
   const displayCircle = useBreakpointValue({ base: "none", md: "block" });
@@ -37,6 +55,7 @@ export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const colorToggle = useColorModeValue("black", "white");
+
   return (
     <Box>
       <Head>harukis portfolio site</Head>
@@ -71,15 +90,14 @@ export default function App() {
               Haruki oba
             </Text>
             <Text color={colorToggle}>
-              I am a freelance engineer. I mainly participate in both front-end
-              and back-end work
+              I am a Back-End web developer. I am interested in finance and IT.
             </Text>
-            <Flex justifyContent={buttonAlignment}>
+            <Flex justifyContent={buttonAlignment} mt="2">
               <Button
                 color={colorToggle}
-                onClick={() => {
-                  window.open("/contactForm");
-                }}
+                // onClick={() => {
+                //   window.open("/contactForm");
+                // }}
               >
                 Hire Me
               </Button>
@@ -87,6 +105,42 @@ export default function App() {
           </Box>
         </Flex>
       </Stack>
+
+      <Box p={4} color={colorToggle}>
+        <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
+          <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
+            What I Can Do
+          </Heading>
+        </Stack>
+
+        <Container maxW={"5xl"} mt={12}>
+          <Flex flexWrap="wrap" gridGap={6} justify="center">
+            <Card
+              heading={"FrontEnd"}
+              icon={<Icon as={FcAssistant} w={10} h={10} />}
+              description={
+                "HTML, CSS (SCSS), JavaScript, React,Next.jsなどのフロントエンド技術にも精通しており、ウェブサイトやアプリケーションのUI部分を作成するスキル"
+              }
+              href={"#"}
+            />
+            <Card
+              heading={"BackEnd"}
+              icon={<Icon as={FcCollaboration} w={10} h={10} />}
+              description={
+                "Java (SpringBoot2)・NestJSをはじめとするWeb開発技術"
+              }
+              href={"#"}
+            />
+            <Card
+              heading={"DataBase"}
+              icon={<Icon as={FcDonate} w={10} h={10} />}
+              description={" MySQLやFirebaseなどのデータベースの技術"}
+              href={"#"}
+            />
+          </Flex>
+        </Container>
+      </Box>
+
       <Box mt="auto">
         <Footer />
       </Box>
