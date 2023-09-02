@@ -16,7 +16,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Card } from "@/components/molecules/card";
+import { Card } from "@/components/molecules/Card";
 
 import { Header } from "../components/Header";
 import { Image } from "@chakra-ui/image";
