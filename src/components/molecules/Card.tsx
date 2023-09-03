@@ -55,9 +55,9 @@ export const Card = ({ heading, description, icon, href }: CardProps) => {
             {description}
           </Text>
         </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
+        {/* <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
           Learn more
-        </Button>
+        </Button> */}
       </Stack>
     </Box>
   );
