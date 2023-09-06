@@ -61,14 +61,14 @@ export default function App() {
       <Head>harukis portfolio site</Head>
       <Header />
       <Stack>
-        <Circle
+        {/* <Circle
           position="absolute"
           bg="green.100"
           opacity="0.1"
           size="310px"
           alignSelf="flex-start"
           display={displayCircle}
-        />
+        /> */}
         <Flex
           direction={flexDirection}
           justifyContent="center"
